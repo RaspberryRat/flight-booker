@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create a flight booker app for the Odin Project.
 
-Things you may want to cover:
+App will have:
 
-* Ruby version
+    Enter desired dates / airports and click “Search”
+    Choose from among a list of available flights
+    Enter passenger information for all passengers
+    Enter billing information
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Developed using rails
