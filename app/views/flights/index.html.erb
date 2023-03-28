@@ -8,8 +8,8 @@
   <%= f.collection_select :arrival_airport_id, Airport.order(:airport_code), :id, :airport_code %>
   <%= f.label :passenger_count, 'Number of Passengers' %>
   <%= f.select :passenger_count, 1..10 %>
-  <%f.label :flight_date, 'Flight date' %>
-
+  <%= f.label :flight_date, 'Departure date:' %>
+  <%= f.collection_select :departure_time, Flight.get_departure_dates, :id, :departure_date_formatted %>
   <%= f.submit "Search" %>
 <% end %>
 
