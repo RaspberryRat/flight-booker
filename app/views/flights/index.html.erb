@@ -1,0 +1,17 @@
+<h1>Flights</h1>
+
+
+<%= form_with url: flights_path, method: :get do |f| %>
+  <%= f.label :departure_airport_id, 'Departure Airport' %>
+  <%= f.collection_select :departure_airport_id, Airport.order(:airport_code), :id, :airport_code %>
+  <%= f.label :arrival_airport_id, 'Arrival Airport' %>
+  <%= f.collection_select :arrival_airport_id, Airport.order(:airport_code), :id, :airport_code %>
+  <%= f.label :passenger_count, 'Number of Passengers' %>
+  <%= f.select :passenger_count, 1..10 %>
+  <%f.label :flight_date, 'Flight date' %>
+
+  <%= f.submit "Search" %>
+<% end %>
+
+
+
