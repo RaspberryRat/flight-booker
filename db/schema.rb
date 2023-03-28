@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_26_235902) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_162851) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_235902) do
     t.bigint "departure_airport_id"
     t.bigint "arrival_airport_id"
     t.datetime "departure_time"
-    t.integer "flight_duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "flight_duration"
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
     t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
   end
