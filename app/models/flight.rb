@@ -17,4 +17,20 @@ class Flight < ApplicationRecord
   def departure_date_formatted
     departure_time.strftime('%B %e, %Y')
   end
+
+  def self.get_departure_airports
+    airports = Flight.select(:departure_airport_id).distinct
+    airport_codes = airports.map do |a|
+      a.departure_airport_id
+    end
+    Airport.where(id: airport_codes).sort
+  end
+
+  def self.get_arrival_airports
+    airports = Flight.select(:arrival_airport_id).distinct
+    airport_codes = airports.map do |a|
+      a.arrival_airport_id
+    end
+    Airport.where(id: airport_codes).sort
+  end
 end
