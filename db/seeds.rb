@@ -11,7 +11,7 @@ Airport.delete_all
 Flight.delete_all
 
 # Seed airports
-Airport.create([{ airport_code: 'YYC'}, { airport_code: 'YEG'}, { airport_code: 'YFC'}, { airport_code: 'YQX'}, { airport_code: 'YHZ'}, { airport_code: 'YQM'}, { airport_code: 'YUL'}, { airport_code: 'YOW'}, { airport_code: 'YQB'}, { airport_code: 'YYT'}, { airport_code: 'YYZ'}, { airport_code: 'YVR'}, { airport_code: 'YWG'}])
+Airport.create([{ airport_code: 'YEG'}, { airport_code: 'YQM'}, { airport_code: 'YOW'}, { airport_code: 'YYZ'}, { airport_code: 'YVR'}])
 
 # Seed flights
 
@@ -22,13 +22,13 @@ airport_codes = Airport.pluck(:id)
 def time_rand
   time = Time.now
   min_time = time + 1.day
-  max_time = time + 1.year
+  max_time = time + 1.month
   time = rand(min_time..max_time)
   Time.utc(time.year, time.month, time.day)
 end
 
 record = 0
-100.times do
+10_000.times do
   record += 1
   print "\rCreated record ##{record}..."
   dep_code = airport_codes.sample

@@ -1,4 +1,5 @@
 class Flight < ApplicationRecord
+  MINUTES_PER_HOUR = 60
   validates :departure_time, presence: true
   validates :flight_duration, presence: true
 
@@ -6,7 +7,7 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, class_name: 'Airport'
 
   def self.show_departure_dates
-    Flight.select(:departure_time).distinct
+    Flight.select(:departure_time).distinct.order(:departure_time)
   end
 
   def departure_date_formatted
@@ -30,21 +31,18 @@ class Flight < ApplicationRecord
   end
 
   def self.find_flights(params)
-    Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id])
+    return 'No Flights are Available' if self.flight_search(params).nil?
+
+    self.flight_search(params)
   end
 
-  # # take data from controller and find it in database I think a class method
-  # def self.find_flights(params)
-  #   # identify airports with find_airport method
-  #   departing_airport = find_airport(params[:departure_airport_id])
-  #   arriving_airport = find_airport(params[:arrival_airport_id])
+  def self.flight_search(params)
+    Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id]).where(departure_time: params[:departure_time])
+  end
 
-  #   # Find that matches multiple conditions
-  #   Flight.where()
-
-  # end
-
-  # def find_airport_id(airport_id)
-  #   Airport.find_by(id: airport_id).id
-  # end
+  def flight_duration_in_hours
+    hours = flight_duration / MINUTES_PER_HOUR
+    minutes = flight_duration % MINUTES_PER_HOUR
+    "#{hours} hours and #{minutes} minutes"
+  end
 end

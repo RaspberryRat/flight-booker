@@ -14,7 +14,23 @@
 <% end %>
 
 <h2>Available Flights</h2>
-
-<%= @flights.each do |f| %>
-<%= f.departure_time %>
-<% end %>
+ <% if @flights.blank? %>
+      <div>No Flight Available, try to search again</div>
+  <% else %>
+    <%= @flights.each do |flight| %>
+      <ul>
+        <li> Departure Date:
+          <%= flight.departure_time.to_time.strftime('%B %e, %Y') %>
+        </li>
+        <li> Departing From:
+          <%= flight.departure_airport.airport_code %>
+        </li>
+        <li> Arriving At:
+          <%= flight.arrival_airport.airport_code %>
+        </li>
+        <li> Flight Duration:
+          <%= flight.flight_duration_in_hours %>
+        </li>
+      </ul>
+    <% end %>
+  <% end %>
