@@ -37,5 +37,3 @@ record = 0
 
   Flight.create(departure_airport_id: dep_code, arrival_airport_id: arr_code, departure_time: time_rand, flight_duration: rand(30..480))
 end
-
-
