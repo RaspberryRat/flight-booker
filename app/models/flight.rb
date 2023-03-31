@@ -29,6 +29,10 @@ class Flight < ApplicationRecord
     Airport.where(id: airport_codes).sort
   end
 
+  def self.find_flights(params)
+    Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id])
+  end
+
   # # take data from controller and find it in database I think a class method
   # def self.find_flights(params)
   #   # identify airports with find_airport method

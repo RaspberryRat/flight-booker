@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    @view = params[:departure_time]
+    @flights = Flight.find_flights(params)
   end
 
   private

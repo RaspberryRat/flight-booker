@@ -9,10 +9,12 @@
   <%= f.label :passenger_count, 'Number of Passengers' %>
   <%= f.select :passenger_count, 1..4 %>
   <%= f.label :flight_date, 'Departure date:' %>
-  <%= f.collection_select :departure_time, Flight.show_departure_dates, :id, :departure_date_formatted %>
+  <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_time, :departure_date_formatted %>
   <%= f.submit "Search" %>
 <% end %>
 
 <h2>Available Flights</h2>
 
-<%= @view %>
+<%= @flights.each do |f| %>
+<%= f.departure_time %>
+<% end %>
