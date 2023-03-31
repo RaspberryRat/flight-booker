@@ -17,22 +17,11 @@
  <% if @flights.blank? && params[:departure_airport_id] %>
       <div>No Flight Available, try to search again</div>
   <% else %>
-    <% flight_num = 1 %>
-    <% @flights.each do |flight| %>
-      <ul> <span><%= flight_num %>:</span>
-        <li> Departure Date:
-          <%= flight.departure_date_human_readable_format %>
-        </li>
-        <li> Departing From:
-          <%= flight.departure_airport.airport_code %>
-        </li>
-        <li> Arriving At:
-          <%= flight.arrival_airport.airport_code %>
-        </li>
-        <li> Flight Duration:
-          <%= flight.flight_duration_in_hours %>
-        </li>
-      </ul>
-    <% flight_num += 1%>
-    <% end %>
+    <%= form_with  url: flights_path, method: :get do |flight| %>
+      <%= flight.collection_radio_buttons :flight_id, @flights.order(:departure_time), :id, :flight_details %>
+      <%= flight.hidden_field :passenger_count, value: params[:passenger_count] %>
+      <br>
+      <%= flight.submit "Choose Flight" %>
+
+      <% end %>
   <% end %>

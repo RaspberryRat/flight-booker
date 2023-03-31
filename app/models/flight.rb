@@ -49,4 +49,11 @@ class Flight < ApplicationRecord
     minutes = flight_duration % MINUTES_PER_HOUR
     "#{hours} hours and #{minutes} minutes"
   end
+
+  def flight_details
+    "Departure Date: #{departure_date_human_readable_format}\n
+    Departing Airport: #{departure_airport.airport_code}\n
+    Arrival Airport: #{arrival_airport.airport_code}\n
+    Flight Duration: #{flight_duration_in_hours}\n"
+  end
 end
