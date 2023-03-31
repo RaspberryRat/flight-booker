@@ -10,8 +10,12 @@ class Flight < ApplicationRecord
     Flight.select(:departure_time).distinct.order(:departure_time)
   end
 
-  def departure_date_formatted
+  def departure_date_human_readable_format
     departure_time.strftime('%B %e, %Y')
+  end
+
+  def departure_date_year_first_format
+    departure_time.strftime('%Y/%m/%d')
   end
 
   def self.show_departure_airports

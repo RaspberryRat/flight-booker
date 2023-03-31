@@ -9,7 +9,7 @@
   <%= f.label :passenger_count, 'Number of Passengers' %>
   <%= f.select :passenger_count, 1..4 %>
   <%= f.label :flight_date, 'Departure date:' %>
-  <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_time, :departure_date_formatted %>
+  <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_date_year_first_format, :departure_date_human_readable_format %>
   <%= f.submit "Search" %>
 <% end %>
 
@@ -21,7 +21,7 @@
     <% @flights.each do |flight| %>
       <ul> <span><%= flight_num %>:</span>
         <li> Departure Date:
-          <%= flight.departure_time.to_time.strftime('%B %e, %Y') %>
+          <%= flight.departure_date_human_readable_format %>
         </li>
         <li> Departing From:
           <%= flight.departure_airport.airport_code %>
