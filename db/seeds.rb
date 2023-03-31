@@ -26,7 +26,7 @@ def time_rand
 end
 
 record = 0
-10_000.times do
+100.times do
   record += 1
   print "\rCreated record ##{record}..."
   dep_code = airport_codes.sample
