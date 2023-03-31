@@ -5,12 +5,7 @@ class Flight < ApplicationRecord
   belongs_to :departure_airport, class_name: 'Airport'
   belongs_to :arrival_airport, class_name: 'Airport'
 
-
-  # def self.get_event_dates
-  #   event_dates = UgradRsvp.find_by_sql("select distinct event_date from admissions.ugrad_rsvps where event_date is not null order by event_date desc")
-  # end
-
-  def self.get_departure_dates
+  def self.show_departure_dates
     Flight.select(:departure_time).distinct
   end
 
@@ -18,7 +13,7 @@ class Flight < ApplicationRecord
     departure_time.strftime('%B %e, %Y')
   end
 
-  def self.get_departure_airports
+  def self.show_departure_airports
     airports = Flight.select(:departure_airport_id).distinct
     airport_codes = airports.map do |a|
       a.departure_airport_id
@@ -26,11 +21,26 @@ class Flight < ApplicationRecord
     Airport.where(id: airport_codes).sort
   end
 
-  def self.get_arrival_airports
+  def self.show_arrival_airports
     airports = Flight.select(:arrival_airport_id).distinct
     airport_codes = airports.map do |a|
       a.arrival_airport_id
     end
     Airport.where(id: airport_codes).sort
   end
+
+  # # take data from controller and find it in database I think a class method
+  # def self.find_flights(params)
+  #   # identify airports with find_airport method
+  #   departing_airport = find_airport(params[:departure_airport_id])
+  #   arriving_airport = find_airport(params[:arrival_airport_id])
+
+  #   # Find that matches multiple conditions
+  #   Flight.where()
+
+  # end
+
+  # def find_airport_id(airport_id)
+  #   Airport.find_by(id: airport_id).id
+  # end
 end

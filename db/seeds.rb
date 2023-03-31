@@ -25,7 +25,10 @@ def time_rand
   rand(min_time..max_time)
 end
 
-10.times do
+record = 0
+10_000.times do
+  record += 1
+  print "\rCreated record ##{record}..."
   dep_code = airport_codes.sample
   arr_code = airport_codes.sample
   until dep_code != arr_code
