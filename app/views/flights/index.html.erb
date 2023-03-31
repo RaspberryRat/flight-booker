@@ -14,11 +14,12 @@
 <% end %>
 
 <h2>Available Flights</h2>
- <% if @flights.blank? %>
+ <% if @flights.blank? && params[:departure_airport_id] %>
       <div>No Flight Available, try to search again</div>
   <% else %>
-    <%= @flights.each do |flight| %>
-      <ul>
+    <% flight_num = 1 %>
+    <% @flights.each do |flight| %>
+      <ul> <span><%= flight_num %>:</span>
         <li> Departure Date:
           <%= flight.departure_time.to_time.strftime('%B %e, %Y') %>
         </li>
@@ -32,5 +33,6 @@
           <%= flight.flight_duration_in_hours %>
         </li>
       </ul>
+    <% flight_num += 1%>
     <% end %>
   <% end %>
