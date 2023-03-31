@@ -27,17 +27,10 @@ def time_rand
   Time.utc(time.year, time.month, time.day)
 end
 
-<<<<<<< HEAD
 record = 0
 100.times do
   record += 1
   print "\rCreated record ##{record}..."
-=======
-i = 0
-1_000.times do
-  i += 1
-  print "\rCreating flight record ##{i}"
->>>>>>> 6155b89 (worked on db seed for flights and only show unique flights, will have to update as times are all midnight now)
   dep_code = airport_codes.sample
   arr_code = airport_codes.sample until dep_code != arr_code && !arr_code.nil?
 
