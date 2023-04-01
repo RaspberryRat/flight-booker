@@ -1,0 +1,32 @@
+<h2>Your Flight</h2>
+<% booking = @booking %>
+
+<div> Flight Details
+  <ul>
+    <li> Departure Date:
+      <%= booking.flight.departure_date_human_readable_format  %>
+    </li>
+    <li> Departing From:
+      <%= booking.flight.departure_airport.airport_code %>
+    </li>
+    <li> Arrving At:
+      <%= booking.flight.arrival_airport.airport_code %>
+    </li>
+    <ul> Passengers:
+      <br>
+      <% passenger_count = 1 %>
+      <% booking.passengers.each do |passenger| %>
+      Passenger # <%= passenger_count  %> Information:
+      <br>
+      <li>Name:
+        <%= passenger.name %>
+      </li>
+      <li>Email:
+        <%= passenger.email %>
+      </li>
+      <% passenger_count += 1%>
+      <% end %>
+      <br>
+    </ul>
+  </ul>
+</div>

@@ -12,10 +12,14 @@ class BookingsController < ApplicationController
 
     if @booking.save
       flash[:success] = "You booked on flight #{Booking.last.flight_id}!"
-      redirect_to root_path
+      redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   private
