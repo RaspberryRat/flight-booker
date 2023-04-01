@@ -72,3 +72,7 @@ group :test do
 end
 
 gem 'simple_form'
+
+gem "tailwindcss-rails", "~> 2.0"
+
+gem 'foreman'
