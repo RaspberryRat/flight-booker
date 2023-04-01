@@ -1,6 +1,12 @@
 <h2>New booking</h2>
 <% flight = @flight%>
 
+<div class="flash-message">
+      <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+      <% end %>
+    </div>
+
 <%= form_with model: @flight do |form| %>
   <%= form.hidden_field :flight_id, value: flight.id %>
   <%= form.label :departure_time, "Depature Time:" %>
@@ -14,6 +20,20 @@
   <%= form.text_field :arrival_airport_id, value: flight.arrival_airport.airport_code, disabled: true %>
   <%= form.label :num_passengers, "Number of Passengers" %>
   <%= form.number_field :num_passengers, value: @num_passengers, readonly:true %>
+    <br><br>
+    <ul>
+      Passengers:
+      <%= form.fields_for :passengers do |passengers_form| %>
+      <li>
+        <%= passengers_form.label :name, "Passenger Name:" %>
+        <%= passengers_form.text_field :name %>
 
+        <%= passengers_form.label :email, "Passenger Email:" %>
+        <%= passengers_form.text_field :email %>
+      </li>
+      <% end %>
+    </ul>
+
+    <br><br>
   <%= form.submit "Submit" %>
 <% end %>

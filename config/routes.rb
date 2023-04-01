@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'flights#index'
 
-  resources :flights, only: [:index]
+  resources :flights, only: [:index, :update]
   resources :bookings, only: [:new, :create]
-  resources :flight
+  # resources :flight
 end
