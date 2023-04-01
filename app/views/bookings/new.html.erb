@@ -7,7 +7,7 @@
       <% end %>
     </div>
 
-<%= form_with model: @flight do |form| %>
+<%= form_with model: @booking do |form| %>
   <%= form.hidden_field :flight_id, value: flight.id %>
   <%= form.label :departure_time, "Depature Time:" %>
   <%= form.hidden_field :departure_time, value: flight.departure_time %>
@@ -23,14 +23,16 @@
     <br><br>
     <ul>
       Passengers:
-      <%= form.fields_for :passengers do |passengers_form| %>
-      <li>
-        <%= passengers_form.label :name, "Passenger Name:" %>
-        <%= passengers_form.text_field :name %>
+      <% @passengers.times do %>
+        <%= form.fields_for @booking.passengers.build do |passengers_form| %>
+        <li>
+          <%= passengers_form.label :name, "Passenger Name:" %>
+          <%= passengers_form.text_field :name %>
 
-        <%= passengers_form.label :email, "Passenger Email:" %>
-        <%= passengers_form.text_field :email %>
-      </li>
+          <%= passengers_form.label :email, "Passenger Email:" %>
+          <%= passengers_form.text_field :email %>
+        </li>
+        <% end %>
       <% end %>
     </ul>
 
