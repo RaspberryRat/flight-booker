@@ -23,8 +23,7 @@
     <br><br>
     <ul>
       Passengers:
-      <% @passengers.times do %>
-        <%= form.fields_for @booking.passengers.build do |passengers_form| %>
+        <%= form.fields_for :passengers do |passengers_form| %>
         <li>
           <%= passengers_form.label :name, "Passenger Name:" %>
           <%= passengers_form.text_field :name %>
@@ -32,7 +31,6 @@
           <%= passengers_form.label :email, "Passenger Email:" %>
           <%= passengers_form.text_field :email %>
         </li>
-        <% end %>
       <% end %>
     </ul>
 
