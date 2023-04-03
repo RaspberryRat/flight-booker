@@ -73,6 +73,6 @@ end
 
 gem 'simple_form'
 
-gem "tailwindcss-rails", "~> 2.0"
+gem "tailwindcss-rails"
 
 gem 'foreman'

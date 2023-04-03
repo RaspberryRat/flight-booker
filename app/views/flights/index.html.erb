@@ -1,17 +1,19 @@
 <h1>Flights</h1>
 
 
-<%= form_with url: flights_path, method: :get do |f| %>
-  <%= f.label :departure_airport_id, 'Departure Airport' %>
-  <%= f.collection_select :departure_airport_id, Flight.show_departure_airports, :id, :airport_code %>
-  <%= f.label :arrival_airport_id, 'Arrival Airport' %>
-  <%= f.collection_select :arrival_airport_id, Flight.show_arrival_airports, :id, :airport_code %>
-  <%= f.label :passenger_count, 'Number of Passengers' %>
-  <%= f.select :passenger_count, 1..4 %>
-  <%= f.label :flight_date, 'Departure date:' %>
-  <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_date_year_first_format, :departure_date_human_readable_format %>
-  <%= f.submit "Search" %>
-<% end %>
+<div class="grid grid-rows-5 grid-cols-2">
+  <%= form_with url: flights_path, method: :get do |f| %>
+    <%= f.label :departure_airport_id, 'Departure Airport', class: "row-start-1 col-start-1" %>
+    <%= f.collection_select :departure_airport_id, Flight.show_departure_airports, :id, :airport_code, class: "row-start-1 col-start-2" %>
+    <%= f.label :arrival_airport_id, 'Arrival Airport', class: "row-start-2 col-start-1" %>
+    <%= f.collection_select :arrival_airport_id, Flight.show_arrival_airports, :id, :airport_code, class: "row-start-2 col-start-2" %>
+    <%= f.label :passenger_count, 'Number of Passengers' %>
+    <%= f.select :passenger_count, 1..4 %>
+    <%= f.label :flight_date, 'Departure date:' %>
+    <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_date_year_first_format, :departure_date_human_readable_format %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
 
 <h2>Available Flights</h2>
  <% if @flights.blank? && params[:departure_airport_id] %>
