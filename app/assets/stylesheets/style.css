@@ -177,6 +177,10 @@ select {
 }
 
 .flight-picker-form {
+  display: grid;
+  grid-template-rows: 30px auto;
+  grid-template-columns: auto;
+  gap: 50px;
   align-items: start;
   background-color: rgb(239, 235, 235);
   padding: 30px;
@@ -187,21 +191,34 @@ select {
 
 .flight-picker-form > form {
   display: grid;
-  grid-template-columns: 10px 1fr;
+  grid-template-columns: 10px 1fr 0.5fr 0.5fr;
   grid-template-rows: auto;
   gap: 30px;
 }
 
 .flight-picker-form > form > input[type="radio"] {
-  margin-top: 100px;
   height: 1.2rem;
   width: 1.2rem;
+  align-self: center;
 }
 
 .flight-picker-form > form > input[type="submit"] {
   align-items: start;
   width: 10%;
 }
+
+.flight-picker-details {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  height: 15vh;
+  background-color: white;
+  padding: 15%;
+  padding-top: 5%;
+  border-radius: 30px;
+  flex-wrap: wrap;
+}
+
 
 .flight-picker-form > form > label {
   background-color: rgb(255, 255, 255);

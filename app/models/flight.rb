@@ -43,31 +43,6 @@ class Flight < ApplicationRecord
     self.flight_search(params)
   end
 
-  def self.flight_search(params)
-    Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id]).where(departure_time: params[:departure_time])
-  end
-
-  def flight_details
-    break_the_lines("<strong>Departure Date:</strong> #{departure_date_human_readable_format}\n
-    <strong>Departing At:</strong> #{time_of_departure}\n
-    <strong>Departing Airport:</strong> #{departure_airport.airport_code}\n
-    <strong>Arrival Airport:</strong> #{arrival_airport.airport_code}\n
-    <strong>Duration:</strong> #{flight_duration_in_hours}\n")
-  end
-
-  private
-
-  def break_the_lines(text)
-    text.to_s.gsub(/\n/, '<br/>').html_safe
-  end
-
-  def flight_duration_in_hours
-    flight_time = minutes_to_hours_and_minutes(flight_duration)
-    hours = flight_time[0]
-    minutes = flight_time[1]
-    "#{hours} hours and #{minutes} minutes"
-  end
-
   def time_of_departure
     time = minutes_to_hours_and_minutes(departing_time)
     hour = time[0].to_s
@@ -78,9 +53,22 @@ class Flight < ApplicationRecord
     "#{hour}:#{minute}"
   end
 
+  def flight_duration_in_hours
+    flight_time = minutes_to_hours_and_minutes(flight_duration)
+    hours = flight_time[0]
+    minutes = flight_time[1]
+    "#{hours} hours and #{minutes} minutes"
+  end
+
+  private
+
   def minutes_to_hours_and_minutes(minutes)
     time = []
     time << minutes / MINUTES_PER_HOUR
     time << minutes % MINUTES_PER_HOUR
+  end
+
+  def self.flight_search(params)
+    Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id]).where(departure_time: params[:departure_time]).take(3)
   end
 end

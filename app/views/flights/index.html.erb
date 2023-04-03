@@ -1,10 +1,9 @@
 <div class="index-container">
-  <%= @date.nil? %>
   <h2>Choose Your Flight</h2>
 
 
   <div class="flight-search-form">
-    <%= form_with url: flights_path, method: :get do |f| %>
+    <%= form_with(model: @flight, url: flights_path, method: :get) do |f| %>
       <%= f.label :departure_airport_id, 'Departure Airport' %>
       <%= f.collection_select :departure_airport_id, Flight.show_departure_airports, :id, :airport_code_to_name %>
       <%= f.label :arrival_airport_id, 'Arrival Airport' %>
@@ -17,7 +16,7 @@
     <% end %>
   </div>
 
-  <% if @flights.blank?%>
+  <% if @flights.blank? %>
   <div></div>
   <% else %>
    <div class="flight-picker-form">
@@ -29,10 +28,24 @@
           <%=  params[:departure_time].to_datetime.strftime('%B %e, %Y') %>
         <% end %>
       </h2>
-        <%= form_with  url: new_booking_path, method: :get do |flight| %>
-          <%= flight.collection_radio_buttons :flight_id, @flights.order(:departure_time).first(3), :id, :flight_details %>
-          <%= flight.hidden_field :passenger_count, value: params[:passenger_count] %>
-          <%= flight.submit "Choose Flight" %>
+        <%= form_with(model: @flight, url: new_booking_path, method: :get) do |form| %>
+          <%= form.hidden_field :passenger_count, value: params[:passenger_count] %>
+
+          <% @flights.each do |flight| %>
+            <%= form.radio_button :flight_id, flight.id %>
+            <div class="flight-selection-location flight-picker-details">
+              From:<br> <%= flight.departure_airport.airport_code %> (<%= flight.departure_airport.airport_code_to_name  %>)
+              <br><br>To:<br> <%= flight.arrival_airport.airport_code %> (<%= flight.arrival_airport.airport_code_to_name  %>)
+            </div>
+
+            <div class="departing-time flight-picker-details"><strong>Departing At:</strong>
+            <%= flight.time_of_departure %></div>
+
+            <div class="flight-duration flight-picker-details"><strong>Duration: </strong>
+            <%= flight.flight_duration_in_hours %></div>
+          <% end%>
+
+          <%= form.submit "Choose Flight" %>
         <% end %>
       <% end %>
    </div>
