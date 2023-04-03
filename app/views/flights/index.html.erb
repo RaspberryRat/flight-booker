@@ -1,4 +1,5 @@
 <div class="index-container">
+  <%= @date.nil? %>
   <h2>Choose Your Flight</h2>
 
 
@@ -11,20 +12,23 @@
       <%= f.label :passenger_count, 'Number of Passengers' %>
       <%= f.select :passenger_count, 1..4 %>
       <%= f.label :flight_date, 'Departure date:' %>
-      <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_date_year_first_format, :departure_date_human_readable_format %>
+      <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_time, :departure_date_human_readable_format %>
       <%= f.submit "Search" %>
     <% end %>
   </div>
 
-  <h2>Available Flights</h2>
    <div class="flight-picker-form">
      <% if @flights.blank? && params[:departure_airport_id] %>
           <div>No Flight Available, try to search again</div>
       <% else %>
+      <h2 class="flight-picker-title">Flights Available for
+        <% unless params[:departure_time].nil? %>
+          <%=  params[:departure_time].to_datetime.strftime('%B %e, %Y') %>
+        <% end %>
+      </h2>
         <%= form_with  url: new_booking_path, method: :get do |flight| %>
           <%= flight.collection_radio_buttons :flight_id, @flights.order(:departure_time), :id, :flight_details %>
           <%= flight.hidden_field :passenger_count, value: params[:passenger_count] %>
-          <br>
           <%= flight.submit "Choose Flight" %>
         <% end %>
       <% end %>
