@@ -5,9 +5,9 @@
   <div class="flight-search-form">
     <%= form_with url: flights_path, method: :get do |f| %>
       <%= f.label :departure_airport_id, 'Departure Airport' %>
-      <%= f.collection_select :departure_airport_id, Flight.show_departure_airports, :id, :airport_code %>
+      <%= f.collection_select :departure_airport_id, Flight.show_departure_airports, :id, :airport_code_to_name %>
       <%= f.label :arrival_airport_id, 'Arrival Airport' %>
-      <%= f.collection_select :arrival_airport_id, Flight.show_arrival_airports, :id, :airport_code %>
+      <%= f.collection_select :arrival_airport_id, Flight.show_arrival_airports, :id, :airport_code_to_name %>
       <%= f.label :passenger_count, 'Number of Passengers' %>
       <%= f.select :passenger_count, 1..4 %>
       <%= f.label :flight_date, 'Departure date:' %>

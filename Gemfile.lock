@@ -87,6 +87,8 @@ GEM
     debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dockerfile-rails (1.2.5)
+      rails
     erubi (1.12.0)
     foreman (0.87.2)
     globalid (1.1.0)
@@ -126,7 +128,11 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
+    nokogiri (1.14.2-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.14.2-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.6)
     public_suffix (5.0.1)
@@ -184,7 +190,11 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.26-aarch64-linux)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.26-arm64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.26-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.2)
@@ -212,12 +222,15 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   capybara
   debug
+  dockerfile-rails (>= 1.2)
   foreman
   importmap-rails
   jbuilder

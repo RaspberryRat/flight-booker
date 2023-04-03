@@ -76,3 +76,5 @@ gem 'simple_form'
 gem "tailwindcss-rails"
 
 gem 'foreman'
+
+gem "dockerfile-rails", ">= 1.2", :group => :development

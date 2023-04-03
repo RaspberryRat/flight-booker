@@ -127,6 +127,7 @@ h2 {
   display: grid;
   grid-template-rows: 50px 1fr 50px auto;
   gap: 20px;
+  justify-items: center;
 }
 
 
@@ -139,6 +140,29 @@ form
   padding-left: 50px;
   gap: 10px;
   font-size: 1.2rem;
+}
+
+.flight-search-form > form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.flight-search-form > form > label {
+  grid-row: 1;
+}
+
+.flight-search-form > form > select {
+  grid-row: 2;
+  border-radius: 40px;
+}
+
+select {
+  border-radius: 40px;
+}
+
+.flight-search-form > form > input[type="submit"] {
+  grid-row: 3;
 }
 
 .flight-search-form {
@@ -175,6 +199,7 @@ input[type="submit"] {
   text-align: center;
   display: flex;
   padding: 15px 35px;
+  border-radius: 40px;
 }
 
 input[type="submit"]:hover {
