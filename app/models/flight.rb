@@ -38,9 +38,7 @@ class Flight < ApplicationRecord
   end
 
   def self.find_flights(params)
-    return 'No Flights are Available' if self.flight_search(params).nil?
-
-    self.flight_search(params)
+    Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id]).where(departure_time: params[:departure_time]).take(3)
   end
 
   def time_of_departure
@@ -66,9 +64,5 @@ class Flight < ApplicationRecord
     time = []
     time << minutes / MINUTES_PER_HOUR
     time << minutes % MINUTES_PER_HOUR
-  end
-
-  def self.flight_search(params)
-    Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id]).where(departure_time: params[:departure_time]).take(3)
   end
 end

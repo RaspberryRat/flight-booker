@@ -1,0 +1,18 @@
+<div class="booking-flight-details">
+  <h2>
+    From:<br> <%= flight.departure_airport.airport_code %> (<%= flight.departure_airport.airport_code_to_name  %>)
+      <br><br>To:<br> <%= flight.arrival_airport.airport_code %> (<%= flight.arrival_airport.airport_code_to_name  %>)
+  </h2>
+
+  <div class="booking-departure-details"> Departing:
+    <%= flight.departure_date_human_readable_format %> At:
+    <%= flight.time_of_departure %>
+  </div>
+
+  <div class="class">Flight Duration:
+    <%= flight.flight_duration_in_hours %>
+  </div>
+</div>
+<div class="bottom-border-div"></div>
+
+

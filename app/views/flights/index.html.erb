@@ -1,6 +1,6 @@
 <div class="index-container">
   <h2>Choose Your Flight</h2>
-
+  <%= params[:departure_airport_id].blank? %>
 
   <div class="flight-search-form">
     <%= form_with(model: @flight, url: flights_path, method: :get) do |f| %>
@@ -19,12 +19,12 @@
     <% end %>
   </div>
 
-  <% if @flights.blank? %>
+  <% if params[:departure_airport_id].blank? %>
   <div></div>
   <% else %>
    <div class="flight-picker-form">
-     <% if @flights.blank? && params[:departure_airport_id] %>
-          <div>No Flight Available, try to search again</div>
+     <% if @flights.blank? %>
+          <div>No Flight Available, try to search again.</div>
       <% else %>
       <h2 class="flight-picker-title">Flights Available for
         <% unless params[:departure_time].nil? %>
