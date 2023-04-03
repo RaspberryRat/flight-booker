@@ -5,13 +5,16 @@
   <div class="flight-search-form">
     <%= form_with(model: @flight, url: flights_path, method: :get) do |f| %>
       <%= f.label :departure_airport_id, 'Departure Airport' %>
-      <%= f.collection_select :departure_airport_id, Flight.show_departure_airports, :id, :airport_code_to_name %>
+      <%= f.collection_select :departure_airport_id, Flight.show_departure_airports, :id, :airport_code_to_name,
+      { include_blank: "Departing..." }, { required: true }  %>
       <%= f.label :arrival_airport_id, 'Arrival Airport' %>
-      <%= f.collection_select :arrival_airport_id, Flight.show_arrival_airports, :id, :airport_code_to_name %>
+      <%= f.collection_select :arrival_airport_id, Flight.show_arrival_airports, :id, :airport_code_to_name,
+      { include_blank: "Arriving..." }, { required: true } %>
       <%= f.label :passenger_count, 'Number of Passengers' %>
       <%= f.select :passenger_count, 1..4 %>
       <%= f.label :flight_date, 'Departure date:' %>
-      <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_time, :departure_date_human_readable_format %>
+      <%= f.collection_select :departure_time, Flight.show_departure_dates, :departure_time,
+       :departure_date_human_readable_format %>
       <%= f.submit "Search" %>
     <% end %>
   </div>
