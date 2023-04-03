@@ -12,11 +12,28 @@
   </head>
 
   <body>
-    <div class="flash-message">
-      <% flash.each do |name, message| %>
-      <div class="<%= name %>"><%= message %></div>
-      <% end %>
+    <div class="container">
+      <div class="header">
+        <div class="site-title">
+          <%= link_to 'Easy Flight Booker', root_path  %>
+        </div>
+        <div class="company-logo">
+          <%= image_tag 'plane.svg' %>
+        </div>
+      </div>
+      <div class="content-container">
+        <div class="flash-message">
+          <% flash.each do |name, message| %>
+          <div class="<%= name %>"><%= message %></div>
+          <% end %>
+        </div>
+        <%= yield %>
+      </div>
+      <div class="footer">
+        <div class="git-link">
+          <%= link_to "Smelly Industries", 'https://www.github.com/raspberryrat' %>
+        </div>
+      </div>
     </div>
-    <%= yield %>
   </body>
 </html>

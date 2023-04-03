@@ -52,3 +52,65 @@ button, input[type="submit"], input[type="reset"] {
 	cursor: pointer;
 	outline: inherit;
 }
+
+* {
+  font: "Helvetica", sans-serif;
+  font-size: 20px;
+
+  --dark: #333745;
+  --red: #E63462;
+  --orange: #FE5F55;
+  --green: #C7EFCF;
+  --biege: #EEF5DB;
+
+}
+
+body {
+  background-color: var(--green);
+}
+
+.container {
+  min-height: 100%;
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr 5vh;
+}
+
+.header,
+.footer {
+  min-width: 100%;
+  min-height: 5vh;
+  background-color: var(--orange);
+  padding: 10px;
+  padding-bottom: 5px;
+  color: var(--biege);
+
+}
+
+.header {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.site-title {
+}
+
+.company-logo {
+  margin-left: 20px;
+}
+
+.company-logo > img {
+  height: 6vh;
+  width: auto;
+}
