@@ -126,6 +126,7 @@ h2 {
   color: var(--dark);
   display: grid;
   grid-template-rows: 50px 1fr 50px auto;
+  gap: 20px;
 }
 
 
@@ -138,6 +139,10 @@ form
   padding-left: 50px;
   gap: 10px;
   font-size: 1.2rem;
+}
+
+.flight-search-form {
+  margin-bottom: 50px;
 }
 
 .flight-picker-form {
@@ -165,12 +170,23 @@ form
 input[type="submit"] {
   background-color: var(--orange);
   border: 3px solid var(--dark);
-  color: var(--dark);
+  color: var(--biege);
   border-radius: 8px;
   text-align: center;
   display: flex;
   padding: 15px 35px;
+}
 
+input[type="submit"]:hover {
+  background-color: var(--red);
+  color: var(--green);
+  border: 3px solid var(--biege);
+}
+
+input[type="submit"]:active {
+  background-color: lightblue;
+  color: var(--biege);
+  border: 3px solid var(--orange);
 }
 
 .flight-picker-form > form > input[type="submit"] {
@@ -212,3 +228,61 @@ strong {
 .passenger-form > li:first-child {
   padding-top: 30px;
 }
+
+.booking-show-container {
+  color: var(--dark);
+  display: grid;
+  grid-template-rows: 50px auto;
+  padding: 30px;
+  padding-top: 10px;
+}
+
+.flight-details {
+  font-size: 1.5rem;
+
+}
+
+.flight-details-title {
+  text-decoration: underline;
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-details > ul {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.flight-details > ul > li {
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+.passenger-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.passenger-container > li {
+  margin-top: 10px;
+}
+
+.passenger-num {
+  margin-top: 30px;
+  border-bottom: 1px solid var(--dark);
+  margin-bottom: 10px;
+}
+
+.passengers {
+  border-bottom: 2px solid var(--dark);
+  width: fit-content;
+  padding-bottom: 10px;
+  font-size: 1.3rem;
+  padding-left: 10px;
+}
+
+.arriving-list-item {
+  margin-bottom: 50px;
+}
+

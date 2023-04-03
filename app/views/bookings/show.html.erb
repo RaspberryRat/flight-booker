@@ -1,32 +1,33 @@
-<h2 class="text-3xl font-bold underline">Your Flight</h2>
-<% booking = @booking %>
+<div class="booking-show-container">
+  <h2>Your Flight</h2>
+  <% booking = @booking %>
 
-<div> Flight Details
-  <ul>
-    <li> Departure Date:
-      <%= booking.flight.departure_date_human_readable_format  %>
-    </li>
-    <li> Departing From:
-      <%= booking.flight.departure_airport.airport_code %>
-    </li>
-    <li> Arrving At:
-      <%= booking.flight.arrival_airport.airport_code %>
-    </li>
-    <ul> Passengers:
-      <br>
-      <% passenger_count = 1 %>
-      <% booking.passengers.each do |passenger| %>
-      Passenger # <%= passenger_count  %> Information:
-      <br>
-      <li>Name:
-        <%= passenger.name %>
+  <div class="flight-details"><span class="flight-details-title">Flight Details</span>
+    <ul>
+      <li> <strong>Departure Date:</strong>
+        <%= booking.flight.departure_date_human_readable_format  %>
       </li>
-      <li>Email:
-        <%= passenger.email %>
+      <li> <strong>Departing From:</strong>
+        <%= booking.flight.departure_airport.airport_code %>
       </li>
-      <% passenger_count += 1%>
-      <% end %>
-      <br>
+      <li class="arriving-list-item"> <strong>Arrving At:</strong>
+        <%= booking.flight.arrival_airport.airport_code %>
+      </li>
+      <ul class="passenger-container"> <strong>Passengers:</strong>
+        <% passenger_count = 1 %>
+        <% booking.passengers.each do |passenger| %>
+        <div class="passengers">
+          <div class="passenger-num"><strong>Passenger # <%= passenger_count  %> Information:</strong></div>
+          <li><strong>Name:</strong>
+            <%= passenger.name %>
+          </li>
+          <li><strong>Email:</strong>
+            <%= passenger.email %>
+          </li>
+        </div>
+        <% passenger_count += 1%>
+        <% end %>
+      </ul>
     </ul>
-  </ul>
+  </div>
 </div>
