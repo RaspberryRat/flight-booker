@@ -114,3 +114,101 @@ body {
   height: 6vh;
   width: auto;
 }
+
+h2 {
+  font-size: 1.5rem;
+  padding: 10px;
+  font-weight: bold;
+  padding-left: 30px;
+}
+
+.index-container {
+  color: var(--dark);
+  display: grid;
+  grid-template-rows: 50px 1fr 50px auto;
+}
+
+
+form
+ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-left: 50px;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+
+.flight-picker-form {
+  align-items: start;
+}
+
+.flight-picker-form > form {
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  grid-template-rows: auto;
+  gap: 30px;
+
+}
+.flight-picker-form > form > input[type="submit"] {
+  align-items: start;
+  width: 10%;
+}
+
+.flight-picker-form > form > label {
+  padding-left: 30px;
+  border-bottom: 3px solid var(--dark);
+  width: fit-content;
+}
+
+input[type="submit"] {
+  background-color: var(--orange);
+  border: 3px solid var(--dark);
+  color: var(--dark);
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  padding: 15px 35px;
+
+}
+
+.flight-picker-form > form > input[type="submit"] {
+  align-items: start;
+  width: min-content;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.new-booking-container {
+  color: var(--dark);
+  display: grid;
+  grid-template-rows: 50px auto;
+}
+
+.booking-form > form > label {
+  font-weight: bold;
+}
+
+.passenger-form {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.passenger-form > li {
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.passenger-form > li > input {
+  margin-right: 20px;
+}
+
+.passenger-form > li:first-child {
+  padding-top: 30px;
+}

@@ -54,9 +54,15 @@ class Flight < ApplicationRecord
   end
 
   def flight_details
-    "Departure Date: #{departure_date_human_readable_format}\n
-    Departing Airport: #{departure_airport.airport_code}\n
-    Arrival Airport: #{arrival_airport.airport_code}\n
-    Flight Duration: #{flight_duration_in_hours}\n"
+    break_the_lines("<strong>Departure Date:</strong> #{departure_date_human_readable_format}\n
+    <strong>Departing Airport:</strong> #{departure_airport.airport_code}\n
+    <strong>Arrival Airport:</strong> #{arrival_airport.airport_code}\n
+    <strong>Flight Duration:</strong> #{flight_duration_in_hours}\n")
+  end
+
+  private
+
+  def break_the_lines(text)
+    text.to_s.gsub(/\n/, '<br/>').html_safe
   end
 end
