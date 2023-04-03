@@ -8,7 +8,7 @@ class Airport < ApplicationRecord
     case airport_code
     when 'YEG'
       'Edmonton'
-    when 'YQM'
+    when 'YUL'
       'Montreal'
     when 'YOW'
       'Ottawa'

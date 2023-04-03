@@ -11,7 +11,7 @@ Airport.delete_all
 Flight.delete_all
 
 # Seed airports
-Airport.create([{ airport_code: 'YEG'}, { airport_code: 'YQM'}, { airport_code: 'YOW'}, { airport_code: 'YYZ'}, { airport_code: 'YVR'}])
+Airport.create([{ airport_code: 'YEG'}, { airport_code: 'YUL'}, { airport_code: 'YOW'}, { airport_code: 'YYZ'}, { airport_code: 'YVR'}])
 
 # Seed flights
 
@@ -34,5 +34,5 @@ record = 0
   dep_code = airport_codes.sample
   arr_code = airport_codes.sample until dep_code != arr_code && !arr_code.nil?
 
-  Flight.create(departure_airport_id: dep_code, arrival_airport_id: arr_code, departure_time: time_rand, flight_duration: rand(30..480))
+  Flight.create(departure_airport_id: dep_code, arrival_airport_id: arr_code, departure_time: time_rand, flight_duration: rand(30..480), departing_time: rand(0..1440))
 end

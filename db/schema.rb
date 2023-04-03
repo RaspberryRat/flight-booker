@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_01_162204) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_03_163830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_01_162204) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "flight_duration"
+    t.integer "departing_time"
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
     t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
   end

@@ -17,6 +17,9 @@
     <% end %>
   </div>
 
+  <% if @flights.blank?%>
+  <div></div>
+  <% else %>
    <div class="flight-picker-form">
      <% if @flights.blank? && params[:departure_airport_id] %>
           <div>No Flight Available, try to search again</div>
@@ -27,10 +30,11 @@
         <% end %>
       </h2>
         <%= form_with  url: new_booking_path, method: :get do |flight| %>
-          <%= flight.collection_radio_buttons :flight_id, @flights.order(:departure_time), :id, :flight_details %>
+          <%= flight.collection_radio_buttons :flight_id, @flights.order(:departure_time).first(3), :id, :flight_details %>
           <%= flight.hidden_field :passenger_count, value: params[:passenger_count] %>
           <%= flight.submit "Choose Flight" %>
         <% end %>
       <% end %>
    </div>
+   <% end %>
 </div>

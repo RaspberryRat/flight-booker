@@ -47,22 +47,40 @@ class Flight < ApplicationRecord
     Flight.where(departure_airport_id: params[:departure_airport_id]).where(arrival_airport_id: params[:arrival_airport_id]).where(departure_time: params[:departure_time])
   end
 
-  def flight_duration_in_hours
-    hours = flight_duration / MINUTES_PER_HOUR
-    minutes = flight_duration % MINUTES_PER_HOUR
-    "#{hours} hours and #{minutes} minutes"
-  end
-
   def flight_details
     break_the_lines("<strong>Departure Date:</strong> #{departure_date_human_readable_format}\n
+    <strong>Departing At:</strong> #{time_of_departure}\n
     <strong>Departing Airport:</strong> #{departure_airport.airport_code}\n
     <strong>Arrival Airport:</strong> #{arrival_airport.airport_code}\n
-    <strong>Flight Duration:</strong> #{flight_duration_in_hours}\n")
+    <strong>Duration:</strong> #{flight_duration_in_hours}\n")
   end
 
   private
 
   def break_the_lines(text)
     text.to_s.gsub(/\n/, '<br/>').html_safe
+  end
+
+  def flight_duration_in_hours
+    flight_time = minutes_to_hours_and_minutes(flight_duration)
+    hours = flight_time[0]
+    minutes = flight_time[1]
+    "#{hours} hours and #{minutes} minutes"
+  end
+
+  def time_of_departure
+    time = minutes_to_hours_and_minutes(departing_time)
+    hour = time[0].to_s
+    minute = time[1].to_s
+    hour.prepend('0') if hour.length == 1
+    minute.prepend('0') if hour.length == 1
+
+    "#{hour}:#{minute}"
+  end
+
+  def minutes_to_hours_and_minutes(minutes)
+    time = []
+    time << minutes / MINUTES_PER_HOUR
+    time << minutes % MINUTES_PER_HOUR
   end
 end
