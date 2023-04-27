@@ -22,17 +22,31 @@
 
         <%= render 'flight_details', :flight => flight %>
 
-          <ul class="passenger-form">
-            Passengers
-              <%= form.fields_for :passengers do |passengers_form| %>
-              <li>
-                <%= passengers_form.label :name, "Passenger Name:" %>
-                <%= passengers_form.text_field :name %>
-                <%= passengers_form.label :email, "Passenger Email:" %>
-                <%= passengers_form.email_field :email %>
-              </li>
-            <% end %>
-          </ul>
+          <div data-controller="passenger">
+            <ul class="passenger-form" data-passenger-target="passengerForm">
+              Passengers
+              <template data-passenger-target="passengerList">
+                <li class="passenger">
+                  <label for="booking_passengers_attributes_0_name" required>
+                    Passenger Name:
+                  </label>
+                  <input type="text"
+                      name="booking[passengers_attributes][0][name]"
+                      id="booking_passengers_attributes_0_name" required>
+                  <label for="booking_passengers_attributes_0_email" required>
+                    Passenger Email:
+                  </label>
+                  <input type="text"
+                    name="booking[passengers_attributes][0][email]"
+                    id="booking_passengers_attributes_0_email" required>
+                </li>
+              </template>
+              <button
+                data-action="passenger#addPassenger"
+                class="btn">Add Passenger
+              </button>
+            </ul>
+          </div>
         <%= form.submit "Submit" %>
       <% end %>
     </div>
