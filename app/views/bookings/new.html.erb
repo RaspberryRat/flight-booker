@@ -44,11 +44,19 @@
                 </li>
               </template>
             </ul>
-              <button
-                type="button"
-                data-action="passenger#addPassenger"
-                class="btn">Add Passenger
-              </button>
+            <br>
+              <div class="passenger-btns">
+                <button
+                  type="button"
+                  data-action="passenger#addPassenger"
+                  class="btn">Add Passenger
+                </button>
+                <button
+                  type="button"
+                  data-action="passenger#removePassenger"
+                  class="btn">Remove Passenger
+                </button>
+              </div>
           </div>
         <%= form.submit "Submit" %>
       <% end %>

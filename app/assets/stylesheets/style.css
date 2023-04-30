@@ -430,3 +430,9 @@ strong {
 .booking-show-container > h2 {
   padding-left: 4px;
 }
+
+.passenger-btns {
+  display: flex;
+  margin-left: 100px;
+  margin-right: 50px;
+}
