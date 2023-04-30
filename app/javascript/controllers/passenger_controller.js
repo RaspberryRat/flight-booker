@@ -11,7 +11,6 @@ export default class extends Controller {
     for (let i = 0; i < passengerCount; i++) {
       this.addPassenger()
     }
-
   }
 
   addPassenger() {
@@ -34,6 +33,15 @@ export default class extends Controller {
     this.passengerFormTarget.append(clone)
   }
 
+  removePassenger() {
+    if (this.indexValue > 1) {
+      const lastChild = this.passengerFormTarget.lastElementChild;
+      if (lastChild) {
+        lastChild.remove();
+        this.indexValue--;
+      }
+    }
+  }
 }
 
 
