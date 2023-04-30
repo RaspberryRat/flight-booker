@@ -1,8 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "passengerForm", "passengerList" ]
+  static targets = [ "passengerForm", "passengerList", "output" ]
   static values = { index: { type: Number, default: 0 } }
+
+  connect() {
+    const searchParams = new URLSearchParams(location.search)
+    const passengerCount = parseInt(searchParams.get("passenger_count"))
+
+    for (let i = 0; i < passengerCount; i++) {
+      this.addPassenger()
+    }
+
+  }
 
   addPassenger() {
     const clone = this.passengerListTarget.content.cloneNode(true);
