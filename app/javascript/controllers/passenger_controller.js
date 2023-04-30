@@ -12,12 +12,12 @@ export default class extends Controller {
 
     labels[0].textContent = "Passenger Name:"
     labels[0].setAttribute('for', `booking_passengers_attributes_${this.indexValue}_name`)
-    inputs[0].setAttribute('id', `booking[passengers_attributes][${this.indexValue}][name]`)
-    inputs[0].setAttribute('name', `booking_passengers_attributes_${this.indexValue}_name`)
+    inputs[0].setAttribute('name', `booking[passengers_attributes][${this.indexValue}][name]`)
+    inputs[0].setAttribute('id', `booking_passengers_attributes_${this.indexValue}_name`)
     labels[1].textContent = "Passenger Email:"
     labels[1].setAttribute('for', `booking_passengers_attributes_${this.indexValue}_email`)
-    inputs[1].setAttribute('id', `booking[passengers_attributes][${this.indexValue}][email]`)
-    inputs[1].setAttribute('name', `booking_passengers_attributes_${this.indexValue}_email`)
+    inputs[1].setAttribute('name', `booking[passengers_attributes][${this.indexValue}][email]`)
+    inputs[1].setAttribute('id', `booking_passengers_attributes_${this.indexValue}_email`)
 
     this.indexValue++
 
