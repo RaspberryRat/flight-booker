@@ -1,0 +1,7 @@
+<h2>Booking Confirmation for Flight #<%= @booking.flight.id %> </h2>
+
+<% flight = @booking.flight %>
+
+
+<p><%= render '/partials/flight_details', :flight => flight %></p>
+
