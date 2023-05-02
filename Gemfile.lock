@@ -90,7 +90,6 @@ GEM
     dockerfile-rails (1.2.5)
       rails
     erubi (1.12.0)
-    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -104,6 +103,10 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -178,9 +181,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_form (5.2.0)
-      actionpack (>= 5.2)
-      activemodel (>= 5.2)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -189,12 +189,6 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.26-aarch64-linux)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.26-arm64-darwin)
-      railties (>= 6.0.0)
-    tailwindcss-rails (2.0.26-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.2)
@@ -231,17 +225,15 @@ DEPENDENCIES
   capybara
   debug
   dockerfile-rails (>= 1.2)
-  foreman
   importmap-rails
   jbuilder
+  letter_opener
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   selenium-webdriver
-  simple_form
   sprockets-rails
   stimulus-rails
-  tailwindcss-rails
   turbo-rails
   tzinfo-data
   web-console
