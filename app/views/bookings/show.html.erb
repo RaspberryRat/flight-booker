@@ -3,7 +3,7 @@
   <% booking = @booking %>
   <% flight = @booking.flight %>
 
-  <%= render 'flight_details', :flight => flight %>
+  <%= render '/partials/flight_details', :flight => flight %>
 
   <div class="passenger-container">
       <ul class="passenger-container-list"> <strong>Passengers:</strong>

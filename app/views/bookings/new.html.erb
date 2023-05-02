@@ -15,50 +15,50 @@
   <% end %>
 
     <div class="booking-form">
-        <%= form.hidden_field :flight_id, value: flight.id %>
-        <%= form.hidden_field :departure_time, value: flight.departure_time %>
-        <%= form.hidden_field :departure_airport_id, value: flight.departure_airport_id %>
-        <%= form.hidden_field :arrival_airport_id, value: flight.arrival_airport_id %>
+      <%= form.hidden_field :flight_id, value: flight.id %>
+      <%= form.hidden_field :departure_time, value: flight.departure_time %>
+      <%= form.hidden_field :departure_airport_id, value: flight.departure_airport_id %>
+      <%= form.hidden_field :arrival_airport_id, value: flight.arrival_airport_id %>
 
-        <%= render 'flight_details', :flight => flight %>
+      <%= render '/partials/flight_details', :flight => flight %>
 
-          <div data-controller="passenger">
-            <div data-passenger-target="output"></div>
+      <div data-controller="passenger">
+        <div data-passenger-target="output"></div>
 
-            <ul class="passenger-form" data-passenger-target="passengerForm">
-              Passengers
-              <template data-passenger-target="passengerList">
-                <li class="passenger">
-                  <label for="booking_passengers_attributes_0_name">
-                    Passenger Name:
-                  </label>
-                  <input type="text"
-                      name="booking[passengers_attributes][0][name]"
-                      id="booking_passengers_attributes_0_name">
-                  <label for="booking_passengers_attributes_0_email">
-                    Passenger Email:
-                  </label>
-                  <input type="email"
-                    name="booking[passengers_attributes][0][email]"
-                    id="booking_passengers_attributes_0_email">
-                </li>
-              </template>
-            </ul>
-            <br>
-              <div class="passenger-btns">
-                <button
-                  type="button"
-                  data-action="passenger#addPassenger"
-                  class="btn">Add Passenger
-                </button>
-                <button
-                  type="button"
-                  data-action="passenger#removePassenger"
-                  class="btn">Remove Passenger
-                </button>
-              </div>
+        <ul class="passenger-form" data-passenger-target="passengerForm">
+          Passengers
+          <template data-passenger-target="passengerList">
+            <li class="passenger">
+              <label for="booking_passengers_attributes_0_name">
+                Passenger Name:
+              </label>
+              <input type="text"
+                  name="booking[passengers_attributes][0][name]"
+                  id="booking_passengers_attributes_0_name">
+              <label for="booking_passengers_attributes_0_email">
+                Passenger Email:
+              </label>
+              <input type="email"
+                name="booking[passengers_attributes][0][email]"
+                id="booking_passengers_attributes_0_email">
+            </li>
+          </template>
+        </ul>
+        <br>
+          <div class="passenger-btns">
+            <button
+              type="button"
+              data-action="passenger#addPassenger"
+              class="btn">Add Passenger
+            </button>
+            <button
+              type="button"
+              data-action="passenger#removePassenger"
+              class="btn">Remove Passenger
+            </button>
           </div>
-        <%= form.submit "Submit" %>
+      </div>
+      <%= form.submit "Submit" %>
       <% end %>
     </div>
 </div>
