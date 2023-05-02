@@ -3,5 +3,11 @@
 
 
 
-<p>Flight Details:<%= render '/partials/flight_details', :flight => flight %></p>
+<div class="container">
+  <h2 style="text-decoration:underline">
+    Flight Details for <%= @passenger.name %> on Flight #<%= flight.id %>:
+    </h2>
+  <%= render '/partials/flight_details', :flight => flight %>
+
+</div>
 
